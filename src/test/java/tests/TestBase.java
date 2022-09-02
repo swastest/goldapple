@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.github.javafaker.Faker;
 import config.ConfigurationCenter;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -9,11 +10,19 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import pages.AuthOrRegistrationModalPage;
+import pages.MainPage;
+import pages.ProductPage;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static java.lang.String.format;
 
 public class TestBase {
+    Faker faker = new Faker();
+    MainPage mainPage = new MainPage();
+    ProductPage productPage = new ProductPage();
+    AuthOrRegistrationModalPage authOrRegistrationModalPage = new AuthOrRegistrationModalPage();
+
     @BeforeAll
     static void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());

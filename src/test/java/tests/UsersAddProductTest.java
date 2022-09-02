@@ -1,16 +1,24 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
-import pages.MainPage;
-import pages.ProductPage;
 
 public class UsersAddProductTest extends TestBase{
 
     @Test
     void userAddCardFirstProductFromMainPage(){
-        new MainPage().openMainPage()
+        mainPage.openMainPage()
                 .clickOnFirstProduct();
-        new ProductPage().clickAddCard()
+        productPage.clickAddCard()
                 .assertionAddedProductToCard();
+    }
+
+    @Test
+    void addedToWishlistUnauthorizedUser(){
+        mainPage.openMainPage()
+                .clickOnFirstProduct();
+        productPage.clickAddToWishlist();
+        authOrRegistrationModalPage.assertionHeaderAuthOrRegistration();
+
+
     }
 }
